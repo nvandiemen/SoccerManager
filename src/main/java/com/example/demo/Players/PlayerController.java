@@ -57,4 +57,9 @@ public class PlayerController {
         return playerService.getPlayersByTeamNumber(teamNumber);
     }
 
+    @GetMapping (path = "/{id}")
+    public Iterable<Player> getPlayersByid(@PathVariable long id){
+        return playerService.getPlayersByid(id);
+    }
+
 }

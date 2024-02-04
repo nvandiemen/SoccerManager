@@ -18,14 +18,16 @@ public class Player {
     public Integer attackScore;
     public Integer defenseScore;
     public Integer averageScore;
-
     public Integer teamNumber;
+    public Double transferValue;
+    public String filePath;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id")
     private Team team;
 
-    public Player(Integer id, String lastName, String line, String position, Integer attackScore, Integer defenseScore, Integer averageScore, Integer teamNumber) {
+    public Player(Integer id, String lastName, String line, String position, Integer attackScore, Integer defenseScore, Integer averageScore, Integer teamNumber, Double transferValue, String filePath) {
         this.id = id;
         this.lastName = lastName;
         this.line = line;
@@ -34,10 +36,13 @@ public class Player {
         this.defenseScore = defenseScore;
         this.averageScore = averageScore;
         this.teamNumber = teamNumber;
+        this.transferValue = transferValue;
+        this.filePath = filePath;
+
     }
 
 
-    public Player(String lastName, String line, String position, Integer attackScore, Integer defenseScore, Integer averageScore, Integer teamNumber) {
+    public Player(String lastName, String line, String position, Integer attackScore, Integer defenseScore, Integer averageScore, Integer teamNumber, Double transferValue, String filePath) {
         this.lastName = lastName;
         this.line = line;
         this.position = position;
@@ -45,6 +50,8 @@ public class Player {
         this.defenseScore = defenseScore;
         this.averageScore = averageScore;
         this.teamNumber = teamNumber;
+        this.transferValue = transferValue;
+        this.filePath = filePath;
     }
 
     public Player() {
@@ -114,6 +121,21 @@ public class Player {
         this.teamNumber = teamNumber;
     }
 
+    public Double getTransferValue() {
+        return transferValue;
+    }
+
+    public void setTransferValue(Double transferValue) {
+        this.transferValue = transferValue;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
 
     @Override
     public String toString() {
@@ -126,6 +148,9 @@ public class Player {
                 ", defenseScore=" + defenseScore +
                 ", averageScore=" + averageScore +
                 ", teamNumber=" + teamNumber +
+                ", transferValue" + transferValue +
+                ", filePath" + filePath +
+
                 '}';
     }
 }

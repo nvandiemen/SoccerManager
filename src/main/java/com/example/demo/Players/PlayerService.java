@@ -69,5 +69,7 @@ public List<Player> getPlayersByTeamNumber(long teamNumber) {
     return playerRepository.findByteamNumber(teamNumber);
 }
 
-
+public List<Player> getPlayersByid(long id){
+    return playerRepository.findByid(id);
+}
 }
