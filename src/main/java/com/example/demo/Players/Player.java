@@ -3,6 +3,8 @@ package com.example.demo.Players;
 import com.example.demo.Teams.Team;
 import jakarta.persistence.*;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.Set;
 
 @Table(name = "player")
@@ -20,14 +22,14 @@ public class Player {
     public Integer averageScore;
     public Integer teamNumber;
     public Double transferValue;
-    public String filePath;
+    public Byte playerImage;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id")
     private Team team;
 
-    public Player(Integer id, String lastName, String line, String position, Integer attackScore, Integer defenseScore, Integer averageScore, Integer teamNumber, Double transferValue, String filePath) {
+    public Player(Integer id, String lastName, String line, String position, Integer attackScore, Integer defenseScore, Integer averageScore, Integer teamNumber, Double transferValue, Byte playerImage) {
         this.id = id;
         this.lastName = lastName;
         this.line = line;
@@ -37,12 +39,12 @@ public class Player {
         this.averageScore = averageScore;
         this.teamNumber = teamNumber;
         this.transferValue = transferValue;
-        this.filePath = filePath;
+        this.playerImage = playerImage;
 
     }
 
 
-    public Player(String lastName, String line, String position, Integer attackScore, Integer defenseScore, Integer averageScore, Integer teamNumber, Double transferValue, String filePath) {
+    public Player(String lastName, String line, String position, Integer attackScore, Integer defenseScore, Integer averageScore, Integer teamNumber, Double transferValue, Byte playerImage) {
         this.lastName = lastName;
         this.line = line;
         this.position = position;
@@ -51,7 +53,7 @@ public class Player {
         this.averageScore = averageScore;
         this.teamNumber = teamNumber;
         this.transferValue = transferValue;
-        this.filePath = filePath;
+        this.playerImage = playerImage;
     }
 
     public Player() {
@@ -129,12 +131,12 @@ public class Player {
         this.transferValue = transferValue;
     }
 
-    public String getFilePath() {
-        return filePath;
+    public Byte getPlayerImage() {
+        return playerImage;
     }
 
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
+    public void setPlayerImage(Byte playerImage) {
+        this.playerImage = playerImage;
     }
 
     @Override
@@ -149,7 +151,7 @@ public class Player {
                 ", averageScore=" + averageScore +
                 ", teamNumber=" + teamNumber +
                 ", transferValue" + transferValue +
-                ", filePath" + filePath +
+                ", playerImage" + playerImage +
 
                 '}';
     }

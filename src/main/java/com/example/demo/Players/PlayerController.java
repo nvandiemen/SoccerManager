@@ -62,4 +62,13 @@ public class PlayerController {
         return playerService.getPlayersByid(id);
     }
 
+
+    @PutMapping("/{id}")
+    public Player addImage(@PathVariable("id") Long id, @RequestBody Player imageSent) {
+        return playerRepository.save(imageSent);}
 }
+
+
+
+
+
