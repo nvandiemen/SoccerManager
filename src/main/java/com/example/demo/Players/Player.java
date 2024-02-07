@@ -1,6 +1,7 @@
 package com.example.demo.Players;
 
 import com.example.demo.Teams.Team;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.awt.image.BufferedImage;
@@ -25,11 +26,19 @@ public class Player {
     public Byte playerImage;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "team_id")
+
+
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "player_team_id")
+    @JsonBackReference
     private Team team;
 
-    public Player(Integer id, String lastName, String line, String position, Integer attackScore, Integer defenseScore, Integer averageScore, Integer teamNumber, Double transferValue, Byte playerImage) {
+
+
+
+
+    public Player(Integer id, String lastName, String line, String position, Integer attackScore, Integer defenseScore, Integer averageScore, Integer teamNumber, Double transferValue, Byte playerImage ) {
         this.id = id;
         this.lastName = lastName;
         this.line = line;
@@ -40,6 +49,10 @@ public class Player {
         this.teamNumber = teamNumber;
         this.transferValue = transferValue;
         this.playerImage = playerImage;
+
+
+
+
 
     }
 
@@ -54,6 +67,10 @@ public class Player {
         this.teamNumber = teamNumber;
         this.transferValue = transferValue;
         this.playerImage = playerImage;
+
+
+
+
     }
 
     public Player() {
@@ -139,6 +156,14 @@ public class Player {
         this.playerImage = playerImage;
     }
 
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
     @Override
     public String toString() {
         return "Player{" +
@@ -152,6 +177,9 @@ public class Player {
                 ", teamNumber=" + teamNumber +
                 ", transferValue" + transferValue +
                 ", playerImage" + playerImage +
+
+
+
 
                 '}';
     }

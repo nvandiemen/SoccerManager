@@ -1,6 +1,7 @@
 package com.example.demo.Teams;
 
 import com.example.demo.Players.Player;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.*;
 
@@ -9,11 +10,14 @@ import java.util.*;
 public class Team {
 @Id
 @GeneratedValue
+//is de column in db die PK draagt
+@Column(name = "team_id" )
 public Integer teamId;
 public String teamName;
 
-@OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
-private List<Player> players = new ArrayList<Player>();
+    @OneToMany(mappedBy = "team")
+    @JsonManagedReference
+    private List<Player> players;
 
 
 
