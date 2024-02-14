@@ -1,9 +1,7 @@
 package com.example.demo.Teams;
 
-import com.example.demo.Players.Player;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.example.demo.Transfers.Transfer;
 import jakarta.persistence.*;
-import java.util.*;
 
 @Table(name = "team")
 @Entity
@@ -15,9 +13,17 @@ public class Team {
 public Integer teamId;
 public String teamName;
 
-    @OneToMany(mappedBy = "team")
-    @JsonManagedReference
-    private List<Player> players;
+//    @OneToMany(mappedBy = "team")
+//    @JsonManagedReference
+//    private List<Player> players;
+//    @OneToOne
+//    @JoinColumn(name = "newTeamId" )
+//public Transfer teamTransfersIn;
+
+
+//@OneToOne
+//@JoinColumn(name = "transferId")
+//    public Transfer teamTransfersOut;
 
 
 

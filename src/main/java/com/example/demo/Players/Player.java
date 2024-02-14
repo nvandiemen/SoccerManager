@@ -1,11 +1,12 @@
 package com.example.demo.Players;
 
-import com.example.demo.Teams.Team;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.example.demo.Transfers.Transfer;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Table(name = "player")
@@ -22,24 +23,44 @@ public class Player {
     public Integer defenseScore;
     public Integer averageScore;
     public Integer teamNumber;
+    public String teamName;
     public Double transferValue;
-    public Byte playerImage;
+//    @OneToMany(mappedBy = "transferedPlayerId", cascade = CascadeType.ALL)
+//    @JsonManagedReference
+    //public Set<Transfer> playerTransfers;
 
 
 
+    public byte[] playerImage;
+//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JoinTable(name = "player_images",
+//    joinColumns = {
+//            @JoinColumn(name = "player_id")
+//    },
+//            inverseJoinColumns = {
+//            @JoinColumn(name = "image_id")
+//            }
+//    )
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "player_team_id")
-    @JsonBackReference
-    private Team team;
+//    public Set<PlayerImage> playerImages;
 
 
+//    public Set<PlayerImage> getPlayerImages() {
+//        return playerImages;
+//    }
+//
+//    public void setPlayerImages(Set<PlayerImage> playerImages) {
+//        this.playerImages = playerImages;
+//    }
+
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "player_team_id")
+//    @JsonBackReference
+//    private Team team;
 
 
-
-    public Player(Integer id, String lastName, String line, String position, Integer attackScore, Integer defenseScore, Integer averageScore, Integer teamNumber, Double transferValue, Byte playerImage ) {
-        this.id = id;
+    public Player(String lastName, String line, String position, Integer attackScore, Integer defenseScore, Integer averageScore, Integer teamNumber, String teamName, Double transferValue, byte[] playerImage) {
         this.lastName = lastName;
         this.line = line;
         this.position = position;
@@ -47,31 +68,12 @@ public class Player {
         this.defenseScore = defenseScore;
         this.averageScore = averageScore;
         this.teamNumber = teamNumber;
+        this.teamName = teamName;
         this.transferValue = transferValue;
+        //this.playerTransfers = playerTransfers;
         this.playerImage = playerImage;
-
-
-
-
-
     }
 
-
-    public Player(String lastName, String line, String position, Integer attackScore, Integer defenseScore, Integer averageScore, Integer teamNumber, Double transferValue, Byte playerImage) {
-        this.lastName = lastName;
-        this.line = line;
-        this.position = position;
-        this.attackScore = attackScore;
-        this.defenseScore = defenseScore;
-        this.averageScore = averageScore;
-        this.teamNumber = teamNumber;
-        this.transferValue = transferValue;
-        this.playerImage = playerImage;
-
-
-
-
-    }
 
     public Player() {
     }
@@ -148,20 +150,20 @@ public class Player {
         this.transferValue = transferValue;
     }
 
-    public Byte getPlayerImage() {
+    public byte[] getPlayerImage() {
         return playerImage;
     }
 
-    public void setPlayerImage(Byte playerImage) {
+    public void setPlayerImage(byte[] playerImage) {
         this.playerImage = playerImage;
     }
 
-    public Team getTeam() {
-        return team;
+    public String getTeamName() {
+        return teamName;
     }
 
-    public void setTeam(Team team) {
-        this.team = team;
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
     }
 
     @Override
@@ -177,6 +179,7 @@ public class Player {
                 ", teamNumber=" + teamNumber +
                 ", transferValue" + transferValue +
                 ", playerImage" + playerImage +
+                ", teamName" + teamName +
 
 
 
