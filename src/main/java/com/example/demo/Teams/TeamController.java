@@ -1,5 +1,6 @@
 package com.example.demo.Teams;
 
+import com.example.demo.Players.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,7 @@ public class TeamController {
 @Autowired
     public TeamRepository teamRepository;
     public TeamService teamService;
+    public PlayerRepository playerRepository;
 
 
     @Autowired
@@ -24,6 +26,7 @@ public class TeamController {
 
     @PostMapping
     public Team save(@RequestBody Team newTeam){
+
         return teamRepository.save(newTeam);
     }
 

@@ -1,7 +1,13 @@
 package com.example.demo.Players;
-
+import com.example.demo.Players.Player;
+import com.example.demo.*;
+import com.example.demo.Teams.TeamRepository;
 import com.example.demo.Teams.TeamService;
+import com.example.demo.Transfers.TransferRepository;
+import com.example.demo.Transfers.TransferService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,11 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.io.Serializable;
+import java.util.*;
 
 @CrossOrigin
 @RestController
@@ -24,6 +29,11 @@ public class PlayerController {
     @Autowired
     PlayerRepository playerRepository;
     PlayerService playerService;
+    ModelMapper modelMapper;
+    TransferRepository transferRepository;
+    TransferService transferService;
+
+    TeamRepository teamRepository;
 
     @Autowired
     PlayerController(PlayerService playerService) {
@@ -99,8 +109,8 @@ public class PlayerController {
     }
 //was Iterable
     @GetMapping(path = "/{id}")
-    public Iterable<Player> getPlayersByid(@PathVariable long id) {
-        return playerService.getPlayersByid(id);
+    public List <Player> findByid(@PathVariable Integer id){
+       return playerService.getPlayerById(id);
     }
 
 
@@ -116,6 +126,26 @@ public class PlayerController {
 //        }
 //        return null;
 //    }
+
+
+
+    @PatchMapping("/{id}")
+   public Player save(@PathVariable("id") Integer id, @RequestBody UpdatePlayersTeamDTO playerToUpdate){
+
+
+
+        Integer playerId = playerToUpdate.getId();
+        Integer teamId = playerToUpdate.getTeamId();
+
+         Player updatedPlayer = new Player();
+         updatedPlayer.setId(playerId);
+         updatedPlayer.setTeamNumber(teamId);
+
+        Player updatedPlayerFinal = modelMapper.map(updatedPlayer, Player.class);
+
+
+        return playerRepository.save(updatedPlayerFinal);
+   }
 
 }
 

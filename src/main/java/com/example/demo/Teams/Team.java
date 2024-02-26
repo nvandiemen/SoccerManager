@@ -11,6 +11,7 @@ public class Team {
 //is de column in db die PK draagt
 @Column(name = "team_id" )
 public Integer teamId;
+
 public String teamName;
 
 //    @OneToMany(mappedBy = "team")

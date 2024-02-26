@@ -4,6 +4,7 @@ import com.example.demo.Transfers.Transfer;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import org.springframework.http.HttpStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.Set;
 
 @Table(name = "player")
 @Entity
-public class Player {
+public class Player{
     @Id
     @GeneratedValue
     @Column(name = "id")
@@ -76,6 +77,12 @@ public class Player {
 
 
     public Player() {
+    }
+
+    public Player(Integer integer) {
+    }
+
+    public Player(String aNull, HttpStatus httpStatus) {
     }
 
     public Integer getId() {

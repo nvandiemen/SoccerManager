@@ -1,9 +1,13 @@
 package com.example.demo.Transfers;
 
-import com.example.demo.Players.PlayerService;
-import com.example.demo.Teams.TeamService;
+import com.example.demo.Players.Player;
+import com.example.demo.Players.PlayerRepository;
+import com.example.demo.Teams.Team;
+import com.example.demo.Teams.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -13,14 +17,18 @@ public class TransferController {
     @Autowired
     TransferRepository transferRepository;
     TransferService transferService;
+    PlayerRepository playerRepository;
+    TeamRepository teamRepository;
 
     @Autowired
-    TransferController (TransferService transferService){
+    TransferController (TransferService transferService, TeamRepository teamRepository, PlayerRepository playerRepository){
+        this.teamRepository = teamRepository;
+        this.playerRepository = playerRepository;
         this.transferService = transferService;
     }
 
     @GetMapping
-    public Iterable <Transfer> getTransfers(){
+    public Iterable<Transfer> getTransfers(){
         return transferService.getTransfers();
 
     }
@@ -33,9 +41,17 @@ public class TransferController {
 
 
         @PostMapping
-        public Transfer addTransfer(@RequestBody Transfer newTransfer){
+        public Transfer addTransfer(@RequestBody TransferDTO dto){
 
+        Player playerId = playerRepository.findByid(dto.getPlayerId()).get(0);
+        Team oldTeam = teamRepository.findById(dto.getOldTeamId()).get();
+        Team newTeam = teamRepository.findById(dto.getNewTeamId()).get();
 
+        Transfer transfer = new Transfer();
+        transfer.setTransferedPlayerId(playerId);
+        transfer.setNewTeamId(newTeam);
+        transfer.setOldTeamId(oldTeam);
+        transfer.setTransferedValue(dto.getValue());
 
 //
 //        @PostMapping("/tutorials/{tutorialId}/comments")
@@ -50,7 +66,12 @@ public class TransferController {
 //        }
 
 
-        return  transferRepository.save(newTransfer);
+        return  transferRepository.save(transfer);
+    }
+
+    @GetMapping(path = "player/{transferedPlayerId}")
+    public Iterable <Transfer> getTransfersByPlayer(@PathVariable Player transferedPlayerId){
+        return transferService.getPlayerByPlayerTransfer(transferedPlayerId);
     }
 
 }
