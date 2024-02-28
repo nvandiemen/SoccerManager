@@ -4,28 +4,28 @@ import java.io.Serializable;
 import com.example.demo.Players.Player;
 
 public class UpdatePlayersTeamDTO implements Serializable {
-    private Integer teamId;
+    private Integer teamNumber;
     //indien niet werkend: mogelijk omwissel naar Type Player
     private Integer id;
 
     public UpdatePlayersTeamDTO() {
     }
 
-    public UpdatePlayersTeamDTO(Integer teamId) {
-        this.teamId = teamId;
+    public UpdatePlayersTeamDTO(Integer teamNumber) {
+        this.teamNumber = teamNumber;
     }
 
-    public UpdatePlayersTeamDTO(Integer teamId, Integer id) {
-        this.teamId = teamId;
+    public UpdatePlayersTeamDTO(Integer teamNumber, Integer id) {
+        this.teamNumber = teamNumber;
         this.id = id;
     }
 
-    public Integer getTeamId() {
-        return teamId;
+    public Integer getTeamNumber() {
+        return teamNumber;
     }
 
-    public void setTeamId(Integer teamId) {
-        this.teamId = teamId;
+    public void setTeamNumber(Integer teamNumber) {
+        this.teamNumber = teamNumber;
     }
 
     public Integer getId() {
@@ -36,11 +36,10 @@ public class UpdatePlayersTeamDTO implements Serializable {
         this.id = id;
     }
 
-
     @Override
     public String toString() {
         return "UpdatePlayersTeamDTO{" +
-                "teamId=" + teamId +
+                "teamNumber=" + teamNumber +
                 ", id=" + id +
                 '}';
     }

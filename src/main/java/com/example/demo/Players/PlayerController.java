@@ -130,12 +130,9 @@ public class PlayerController {
 
 
     @PatchMapping("/{id}")
-   public Player save(@PathVariable("id") Integer id, @RequestBody UpdatePlayersTeamDTO playerToUpdate){
-
-
-
+   public Player save(@PathVariable("/id") Integer id, @RequestBody UpdatePlayersTeamDTO playerToUpdate){
         Integer playerId = playerToUpdate.getId();
-        Integer teamId = playerToUpdate.getTeamId();
+        Integer teamId = playerToUpdate.getTeamNumber();
 
          Player updatedPlayer = new Player();
          updatedPlayer.setId(playerId);
