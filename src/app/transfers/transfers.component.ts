@@ -47,21 +47,21 @@ updateTeam(playerToUpdate:{id: number, teamNumber: number}){
 console.log("Test: this is DTO = " + playerToUpdate)
 console.log("Test: this is DTO. newTeam " + playerToUpdate)
 
-// let playerToUpdateId = dto.playerId;
-// let playerToUpdateNewTeam = dto.newTeamId;
+let playerToUpdateId = playerToUpdate.id;
+let playerToUpdateNewTeam = playerToUpdate.teamNumber;
 // let id: any;
 // let teamNumber: any;
 
-//  let playerToUpdate = {
-//  id : playerToUpdateId,
-//  teamNumber : playerToUpdateNewTeam
-// }
+ let playerToUpdateTest = {
+ id : playerToUpdateId,
+ teamNumber : playerToUpdateNewTeam
+}
 
-console.log("Test player to update: " + playerToUpdate.teamNumber);
 
-this.http.patch('http://localhost:8080/players/' + playerToUpdate.id, playerToUpdate ).subscribe((response)=>
 
-console.log("This is player to update: " + playerToUpdate.id + " and teamNumber: " + playerToUpdate.teamNumber)
+this.http.patch('http://localhost:8080/players/' + playerToUpdate.id, playerToUpdateTest ).subscribe((response)=>
+
+console.log("This is player to update: " + JSON.stringify(playerToUpdateTest) + " and teamNumber: " + playerToUpdate.teamNumber)
 
 )
 }
