@@ -1,0 +1,45 @@
+#player-detail-container{
+    display: flex;
+    justify-content: center;
+    
+    border: 1px black dotted;
+    /* background-color: green; */
+}
+
+#player-detail-info-box{
+   
+ 
+    width: 500px;
+    background-color: orange;
+}
+
+#player-detail-lastname{
+    text-align: center;
+}
+
+#player-details{
+    display: flex;
+
+   
+}
+
+#player-details-image{
+    
+    width: 50%;
+}
+
+#player-details-info{
+ 
+    background-color: purple;
+    width: 50%;
+}
+
+th, td{
+    width: 100px;
+    text-align: left;
+}
+
+#player-detail-transfer-container{
+    background-color: red;
+    height: fit-content;
+}

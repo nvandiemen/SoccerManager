@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef } from '@angular/core';
+import { TeamsComponent } from './teams/teams.component';
+import { PlayersComponent } from './players/players.component';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Online-Soccer-Manager';
+
+  @ViewChild('container', {read: ViewContainerRef})
+  container!: ViewContainerRef;
+
+  createComponent(){
+    this.container.createComponent(PlayersComponent)
+  }
+  
+ 
 }

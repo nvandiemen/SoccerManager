@@ -1,0 +1,61 @@
+<p>transfers works!</p>
+
+<div id="add-transfer-container">
+
+<div id="add-transfer-form-container">
+
+<form #addTransfer = "ngForm" (ngSubmit)="onSubmit(addTransfer.value)" (ngSubmit)="updateTeam(addTransfer.value)" >
+<select ngModel name="playerId">
+<option>--Select Player--</option>
+<option *ngFor="let player of players" [value]="player.id">
+    {{player.lastName}}
+</option>
+
+</select> <br>
+
+<select ngModel name="newTeamId">
+    <option>--Select New Team--</option>
+    <option *ngFor="let team of teams" [value]="team.teamId">
+        {{team.teamName}}
+    </option>
+    
+    </select> <br>
+
+
+    <select ngModel name="oldTeamId">
+        <option>--Select Old Team--</option>
+        <option *ngFor="let team of teams" [value]="team.teamId">
+            {{team.teamName}}
+        </option>
+        
+        </select> <br>
+
+    <!-- <input type="number" ngModel name="playerId" placeholder="ID Player"> <br> -->
+    <!-- <input type="number" ngModel name="newTeamId" placeholder="New Team ID"><br> -->
+    <!-- <input type="number" ngModel name="oldTeamId" placeholder="Old Team ID"><br> -->
+    <input type="number" ngModel name="value" placeholder="Transfer fee"><br>
+
+    <select ngModel name="id">
+        <option>--Select Player--</option>
+        <option *ngFor="let player of players" [value]="player.id">
+            {{player.lastName}}
+        </option>
+        
+        </select> <br>
+  
+    <select ngModel name="teamNumber">
+        <option>--Select New Team--</option>
+        <option *ngFor="let team of teams" [value]="team.teamId">
+            {{team.teamName}}
+        </option>
+        
+        </select> <br>
+
+    
+    <button type="submit" [disabled]="!addTransfer.valid">Add Transfer</button>
+
+</form>
+
+</div>
+
+</div>

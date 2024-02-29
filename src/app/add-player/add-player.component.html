@@ -1,0 +1,65 @@
+<p>add-player works!</p>
+
+<div id="add-player-container">
+
+<div id="add-player-form-container">
+
+<form #addPlayer = "ngForm" (ngSubmit)="onSubmit(addPlayer.value)" >
+
+    <input type="text" ngModel name="lastName" placeholder="Name Player"> <br>
+    <!-- <input type="text" ngModel name="line" placeholder="Line"> <br> -->
+
+    <select ngModel name="line" [(ngModel)]="selectedLine" (change)="setState()">
+        <option>--Select Line--</option>
+        <option value="Attack">Attack</option>
+        <option value="Midfield">Midfield</option>
+        <option value="Defence">Defence</option>
+        <option value="Goalkeeper">Goalkeeper</option>
+    </select> <br> 
+
+    <select ngModel name="position" >
+        <option >--Select Position--</option>
+        <option *ngFor="let state of states" [value]="state">{{state}}</option>
+        
+
+
+    </select> <br>
+
+
+
+    <!-- <input type="text" ngModel name="position" placeholder="Position"> <br> -->
+
+
+    <input type="number" ngModel name="attackScore" placeholder="Quality attack"> <br>
+    <input type="number" ngModel name="defenseScore" placeholder="Quality defence"> <br>
+    <input type="number" ngModel name="averageScore" placeholder="Quality average"> <br>
+    <!-- <input type="number" ngModel name="player_team_id" placeholder="Team"> <br>
+    <input type="text" ngModel name="teamName" placeholder="Team Name"> <br> -->
+   
+    <select  class="form-control" ngModel name="teamNumber">
+        <option>--Select Team--</option>
+        <option *ngFor="let team of loadedTeams" [value]="team.teamId">
+            {{team.teamName}}
+        </option>
+    </select> <br>
+    
+    <select  class="form-control" ngModel name="teamName">
+        <option>--Select Team--</option>
+        <option *ngFor="let team of loadedTeams" [value]="team.teamName">
+            {{team.teamName}}
+        </option>
+    </select> <br><br><br>
+
+    <!-- <input type="file" value="select" (change)="onFileSelected($event)"><br><br><br> -->
+
+
+    <button type="submit" [disabled]="!addPlayer.valid">Add player</button>
+
+
+
+
+</form>
+
+</div>
+
+</div>

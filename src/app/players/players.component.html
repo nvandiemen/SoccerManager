@@ -1,0 +1,57 @@
+
+<div id="addplayer-container">
+    <a href='add-player'>Add player</a>
+</div>
+
+
+<div id="table-container">
+
+    <div id="table-all-players">
+        <table>
+            <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Team </th>
+            </tr>
+
+           <tr><h3>Attack</h3></tr>
+            <tr *ngFor="let attacker of attackers">
+                <td> <a [routerLink]="['playersdetails', attacker.id]" >{{attacker.lastName}}</a></td>
+                <td>{{attacker.position}}</td>
+                <td>{{attacker.teamName}}</td>
+               
+            </tr>
+
+            <h3>Midfield</h3>
+
+            <tr *ngFor="let midfielder of midfielders">
+                <td> <a [routerLink]="['playersdetails', midfielder.id]" >{{midfielder.lastName}}</a></td>
+                <td>{{midfielder.position}}</td>
+                <td>{{midfielder.teamName}}</td>
+            </tr>
+
+            <h3>Defence</h3>
+           
+                <tr *ngFor="let defender of defenders">
+                    <td> <a [routerLink]="['playersdetails', defender.id]" >{{defender.lastName}}</a></td>
+                    <td>{{defender.position}}</td>
+                    <td>{{defender.teamName}}</td>
+                    
+                </tr>
+
+            <h3>Goalkeeper</h3>
+            <tr *ngFor="let goalkeeper of goalkeepers">
+                <td> <a [routerLink]="['playersdetails', goalkeeper.id]" >{{goalkeeper.lastName}}</a></td>
+                <td>{{goalkeeper.position}}</td>
+                <td>{{goalkeeper.teamName}}</td>
+            </tr>
+           
+
+            
+        </table>
+
+    </div>
+</div>
+
+
+<!-- <button (click)="createComponent()">Create</button> -->

@@ -1,0 +1,83 @@
+<br><br><br>
+
+<div *ngFor="let player of playerDetails" id="player-detail-container">
+
+<div id="player-detail-info-box">
+
+    <div id="player-detail-lastname">
+      <h1> {{player.lastName}} </h1>
+      
+    </div>
+
+    <div id="player-details">
+        <div id="player-details-image"></div>
+        <div id="player-details-info">
+        <tr>
+            <th>Line:</th>  
+            <td>{{player.line}}</td>
+        </tr>
+        <tr>
+            <th>Position:</th>  
+            <td>{{player.position}}</td>   
+        </tr>
+        <tr>
+            <th>Attack:</th>  
+            <td>{{player.attackScore}}</td>   
+        </tr>
+
+        <tr>
+            <th>Defense:</th>  
+            <td>{{player.defenseScore}}</td>   
+        </tr>
+
+        <tr>
+            <th>Team:</th>  
+            <td>{{player.teamName}}</td>   
+        </tr>
+
+
+        </div>
+    </div>
+   <div id="player-detail-transfer-container">
+    <div id="player-transfer-title">
+        <h2>Transfers</h2>
+    </div>
+
+    <th>Player</th>
+    <th>Old Team</th>
+    <th>New Team</th>
+    <th>Transfer Fee</th>
+    
+<div *ngFor=" let transfer of playerTransfers">
+    <td>{{transfer.transferedPlayerId.id}}</td>
+    <td>{{transfer.oldTeamId.teamName}}</td>
+    <td>{{transfer.newTeamId.teamName}}</td>
+    <td>{{transfer.transferedValue}}</td>
+
+
+</div>
+
+   </div>
+
+    </div>
+
+</div>
+
+
+<br>
+<br><br><br>
+<!-- <form action="#" id="imageForm"> -->
+<input type="file" (change)="onFileChange($event)" #selectedFile >
+<div >
+   
+
+  
+    <!-- <button (click)="onUpload()">Upload the file</button> -->
+  
+  
+<!-- </form> -->
+
+
+
+
+</div>

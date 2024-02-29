@@ -1,0 +1,18 @@
+<th>Player</th>
+<th>Line</th>
+<th>Position</th>
+<th>Value</th>
+
+
+
+<tr *ngFor="let player of playersByTeam">
+    <td> <a [routerLink]="['/players/playersdetails', player.id]"> {{player.lastName}}  </a>  </td> 
+    <td>{{player.line}}</td>
+    <td>{{player.position}}</td>
+    <td>{{player.teamName}}</td>
+   
+</tr>
+
+
+
+

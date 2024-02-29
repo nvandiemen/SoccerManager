@@ -1,0 +1,44 @@
+<div id="table-container">
+    <div id="table-all-teams" class="table">
+    <table >
+        <h3>Teams</h3>
+        <tr>
+            <!-- <th>Team</th> -->
+        
+        
+        </tr>
+    
+        <tr *ngFor="let team of teams">
+            
+         <td> <a [routerLink]="['teamdetail', team.teamId]"  >{{team.teamName}}</a> </td>
+        <td><button id="btn-delete-team" (click)="deleteTeam(team.teamId)">Delete Team</button></td>
+   
+          
+        </tr>
+    </table>
+    </div>
+<br><br><br>
+
+<div id="container-add-new-team">
+    <div id="container-title-add-new-team">Add Team</div>
+    
+    <div id="container-table-add-team">
+    
+    <form #addTeam = "ngForm" (ngSubmit)="onSubmit(addTeam.value)" >
+    
+                    <input type="text" ngModel name="teamName" required #aName="ngModel"><br>
+                    <!-- <div><small *ngIf="aName.invalid && aName.touched">This field is required</small> 
+                    </div> -->
+                
+                  
+          
+                    <button type="submit" [disabled]="!addTeam.valid">Submit Data</button>
+                    
+           
+     </form>
+    </div>
+    
+    </div>
+
+
+    <button (click)="testFunction()">Test function</button>

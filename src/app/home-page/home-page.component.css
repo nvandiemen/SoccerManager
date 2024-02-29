@@ -1,0 +1,28 @@
+#title-container{
+    display: flex;
+    justify-content: center;
+  
+}
+
+#title-text{
+    background-color: green;
+}
+
+#nav-container{
+    display: flex;
+    background-color: yellow;
+    /* flex-direction: row; */  
+}
+
+li{
+    display: inline;
+}
+
+#nav-bar{
+    height: 25px;
+    display: flex;
+    justify-content: space-around;
+    width: 500px;
+    align-items: center;
+    
+}

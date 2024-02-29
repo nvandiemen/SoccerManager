@@ -1,0 +1,14 @@
+h3 {
+    border: 1px black solid;
+    align-self: first baseline;
+  
+}
+
+th{
+    margin: 0px;
+    padding: 0px;
+
+}
+#table-container{
+    border: 1px red solid;
+}
